@@ -2,5 +2,6 @@
 
 rm -r llhls/*
 
-MP4Box -frag-rt -dash-live 10000 -frag 1000 -profile live -out llhls/live.m3u8:llhls=sf big_buck_bunny.mp4
-gpac -i big_buck_bunny.mp4 reframer:rt=on -o llhls/live.m3u8:segdur=10:cdur=1:profile=live:dmode=dynamic:llhls=sf
+gpac flist:srcs=big_buck_bunny.mp4:floop=-1 reframer:rt=sync -o llhls/live.m3u8:segdur=2:cdur=0.5:profile=live:dmode=dynamic:profile=live:muxtype=ts:llhls=sf
+
+#gpac -i rtmp://localhost:1935/llhls -o llhls/live.m3u8:segdur=2:cdur=0.5:profile=live:dmode=dynamic:profile=live:muxtype=ts
